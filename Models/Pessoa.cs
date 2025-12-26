@@ -7,8 +7,48 @@ namespace ExemploExplorando.Models
 {
     public class Pessoa
     {
-        public string Nome { get; set; }
-        public int Idade { get; set; }
+        
+        private string _nome;
+
+        private int _idade;
+        
+        public string Nome 
+        {
+            //  get retorna o nome em maiúsculo
+            // => sintaxe simplificada para métodos com uma única expressão
+            get => _nome.ToUpper(); 
+
+            set
+            {
+                if (value == "")
+                {
+                    throw new ArgumentException("O nome não pode ser vazio");
+                }
+                else
+                {
+                    _nome = value;
+                }
+            }
+        }
+
+
+
+        public int Idade 
+        { 
+            get => _idade;
+            
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("A idade não pode ser negativa");
+                }
+                else
+                {
+                    _idade = value;
+                }
+            } 
+        }
 
         public void apresentar()
         {
