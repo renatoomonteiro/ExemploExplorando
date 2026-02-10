@@ -31,6 +31,8 @@ namespace ExemploExplorando.Models
             }
         }
 
+        public string Sobrenome { get; set; }
+        public string NomeCompleto => $"{Nome} {Sobrenome}".ToUpper(); //=> $"{Nome} {Sobrenome}" é uma interpolação de string, e o .Trim() remove espaços em branco extras no início ou no final da string resultante.
 
 
         public int Idade 
@@ -50,9 +52,9 @@ namespace ExemploExplorando.Models
             } 
         }
 
-        public void apresentar()
+        public void Apresentar()
         {
-            Console.WriteLine($"Olá, meu nome é {Nome} e tenho {Idade} anos.");
+            Console.WriteLine($"Olá, meu nome é {NomeCompleto} e tenho {Idade} anos.");
         }
     }
 }
