@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,10 +30,16 @@ namespace ExemploExplorando.Models
         public void ListarAlunos()
         {
             Console.WriteLine($"Alunos matriculados no curso de {Nome}:");
-            foreach (Pessoa aluno in Alunos)
+
+            for(int count = 0; count < Alunos.Count; count++)
             {
-                Console.WriteLine(aluno.NomeCompleto);
-            }
+                //Concatenação de Strings
+                //string texto = "Nº " + count + " - " + Alunos[count].NomeCompleto;
+                
+                //Interpolação de Strings
+                string texto = $"Nº {count + 1 } - {Alunos[count].NomeCompleto}";
+                Console.WriteLine(texto);
+            }            
         }
     }
 }
