@@ -80,14 +80,51 @@ Console.WriteLine(data);
 
 //Validando o retorno do TryParse
 
-bool sucesso = DateTime.TryParseExact(dataString, 
-                        "yyyy-MM-dd HH:mm", 
-                        CultureInfo.InvariantCulture, 
-                        DateTimeStyles.None, out DateTime data4);
+// bool sucesso = DateTime.TryParseExact(dataString, 
+//                         "yyyy-MM-dd HH:mm", 
+//                         CultureInfo.InvariantCulture, 
+//                         DateTimeStyles.None, out DateTime data4);
 
-if(sucesso){
-    Console.WriteLine($"Data convertida com sucesso: {data4}");
-}else{
-    Console.WriteLine("Falha ao converter a data.");
-}   
+// if(sucesso){
+//     Console.WriteLine($"Data convertida com sucesso: {data4}");
+// }else{
+//     Console.WriteLine("Falha ao converter a data.");
+// }   
+
+//Realizando a leitura de um arquivo
+//Exceções e Coleções com C#
+
+string[] linhas = File.ReadAllLines("Arquivos/arquivoLeitura.txt");
+
+foreach (string linha in linhas)
+{
+    Console.WriteLine(linha);
+}
+
+/*
+Tratando uma exceção (Utilizando o Try Catch para capturar e 
+lidar com exceções que podem ocorrer durante a leitura do arquivo, 
+como o arquivo não existir ou problemas de permissão.
+O bloco try contém o código que pode gerar uma exceção, 
+e o bloco catch captura a exceção e permite que você lide com ela de maneira apropriada, 
+como exibir uma mensagem de erro para o usuário.)
+Exceções e Coleções com C#
+*/
+try
+{
+    string[] linhas2 = File.ReadAllLines("Arquivos/arquivo-Leitura.txt");
+
+foreach (string linha in linhas)
+{
+    Console.WriteLine(linha);
+}
+}catch(Exception ex)
+{
+    Console.WriteLine($"Ocorreu uma exceção genérica! {ex.Message}");
+}
+
+/*
+Entendendo o bloco finally
+Exceções e Coleções com C#
+*/
 
