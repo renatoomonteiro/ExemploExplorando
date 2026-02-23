@@ -71,9 +71,9 @@ Console.WriteLine(data2.ToString("dd/MM/yyyy HH:mm")); //dd de dia, MM
 
 string dataString = "2022-04-17 18:00";
 
-DateTime.TryParseExact(dataString, 
-                        "yyyy-MM-dd HH:mm", 
-                        CultureInfo.InvariantCulture, 
+DateTime.TryParseExact(dataString,
+                        "yyyy-MM-dd HH:mm",
+                        CultureInfo.InvariantCulture,
                         DateTimeStyles.None, out DateTime data3);
 
 Console.WriteLine(data);
@@ -96,10 +96,10 @@ Console.WriteLine(data);
 
 string[] linhas = File.ReadAllLines("Arquivos/arquivoLeitura.txt");
 
-foreach (string linha in linhas)
-{
-    Console.WriteLine(linha);
-}
+// foreach (string linha in linhas)
+// {
+//     Console.WriteLine(linha);
+// }
 
 /*
 Tratando uma exceção (Utilizando o Try Catch para capturar e 
@@ -110,21 +110,60 @@ e o bloco catch captura a exceção e permite que você lide com ela de maneira 
 como exibir uma mensagem de erro para o usuário.)
 Exceções e Coleções com C#
 */
-try
-{
-    string[] linhas2 = File.ReadAllLines("Arquivos/arquivo-Leitura.txt");
-
-foreach (string linha in linhas)
-{
-    Console.WriteLine(linha);
-}
-}catch(Exception ex)
-{
-    Console.WriteLine($"Ocorreu uma exceção genérica! {ex.Message}");
-}
+// try
+// {
+//     string[] linhas2 = File.ReadAllLines("Arquivos/arquivoLeitura.txt");
+//     Console.WriteLine("Arquivo lido com sucesso!\nConteúdo do arquivo:");
+//     foreach (string linha in linhas)
+//     {
+//         Console.WriteLine(linha);
+//     }
+// }
+// catch (FileNotFoundException ex)
+// {
+//     Console.WriteLine($"Ocorreu um erro na leitura do arquivo.\nArquivo não encontrado! {ex.Message}");
+// }
+// catch(DirectoryNotFoundException ex)
+// {
+//     Console.WriteLine($"Ocorreu um erro na leitura do arquivo.\nCaminho do diretório não encontrado! {ex.Message}");
+// }catch (Exception ex)
+// {
+//     Console.WriteLine($"Ocorreu uma exceção genérica! {ex.Message}");
+// }
 
 /*
 Entendendo o bloco finally
 Exceções e Coleções com C#
 */
 
+try
+{
+    string[] linhas2 = File.ReadAllLines("Arquivos/arquivoLeitura.txt");
+    Console.WriteLine("Arquivo lido com sucesso!\nConteúdo do arquivo:");
+    foreach (string linha in linhas)
+    {
+        Console.WriteLine(linha);
+    }
+}
+catch (FileNotFoundException ex)
+{
+    Console.WriteLine($"Ocorreu um erro na leitura do arquivo.\nArquivo não encontrado! {ex.Message}");
+}
+catch(DirectoryNotFoundException ex)
+{
+    Console.WriteLine($"Ocorreu um erro na leitura do arquivo.\nCaminho do diretório não encontrado! {ex.Message}");
+}catch (Exception ex)
+{
+    Console.WriteLine($"Ocorreu uma exceção genérica! {ex.Message}");
+}
+finally
+{
+    Console.WriteLine("Bloco finally executado!"); //O bloco finally é sempre executado, independentemente de uma exceção ter sido lançada ou não. 
+                                                   // Ele é útil para garantir que certas ações sejam realizadas, como liberar recursos ou fechar conexões, 
+                                                   // mesmo que ocorra um erro durante a execução do código.
+}
+
+//Usando o Throw
+//Exceções e Coleções com C#
+
+new ExemploExcecao().Metodo1();
