@@ -149,10 +149,11 @@ catch (FileNotFoundException ex)
 {
     Console.WriteLine($"Ocorreu um erro na leitura do arquivo.\nArquivo não encontrado! {ex.Message}");
 }
-catch(DirectoryNotFoundException ex)
+catch (DirectoryNotFoundException ex)
 {
     Console.WriteLine($"Ocorreu um erro na leitura do arquivo.\nCaminho do diretório não encontrado! {ex.Message}");
-}catch (Exception ex)
+}
+catch (Exception ex)
 {
     Console.WriteLine($"Ocorreu uma exceção genérica! {ex.Message}");
 }
@@ -167,3 +168,131 @@ finally
 //Exceções e Coleções com C#
 
 new ExemploExcecao().Metodo1();
+
+//Em 23/06/2024, foram feitas alterações no arquivo Program.cs para demonstrar o tratamento de exceções utilizando try-catch e o bloco finally, além de mostrar como usar o throw para lançar uma exceção personalizada. O código atualizado inclui a leitura de um arquivo e o tratamento de possíveis erros que podem ocorrer durante essa operação, como arquivo não encontrado ou diretório inexistente.
+//Próxima aula: Fila na prática
+//Exceções e Coleções com C#
+
+Queue<int> fila = new Queue<int>();
+
+fila.Enqueue(2);
+fila.Enqueue(4);
+fila.Enqueue(6);
+fila.Enqueue(8);
+
+foreach (var item in fila)
+{
+    Console.WriteLine(item);
+}
+
+//removendo um item da fila
+
+Console.WriteLine($"Removendo o elemento: {fila.Dequeue()}");
+
+foreach (var item in fila)
+{
+    Console.WriteLine(item);
+}
+//O método Dequeue() é usado para remover e retornar o elemento no início da fila. 
+// Ele segue a ordem FIFO (First In, First Out), ou seja, o primeiro elemento adicionado à fila será o primeiro a ser removido.
+
+
+//Pilha na prática
+
+
+
+Stack<int> pilha = new Stack<int>();
+
+pilha.Push(2);
+pilha.Push(4);
+pilha.Push(6);
+pilha.Push(8);
+
+
+Console.WriteLine("Pilha na prática");
+foreach (var item in pilha)
+{
+    Console.WriteLine(item);
+}
+
+//removendo um item da pilha
+Console.WriteLine($"Removendo o elemento do topo da pilha: {pilha.Pop()}");
+
+pilha.Push(20);
+foreach (var item in pilha)
+{
+    Console.WriteLine(item);
+}
+
+//Introdução Dictionary
+//Um dicionário é uma coleção de pares chave-valor, onde cada chave é única e está associada a um valor.
+//Ele é útil para armazenar e acessar dados de forma eficiente, permitindo que você recupere um valor com base em sua chave correspondente. 
+//O dicionário é implementado na classe Dictionary<TKey, TValue> em C#.
+
+Dictionary<string, string> estados = new Dictionary<string, string>();
+//<chave, valor>
+estados.Add("SP", "São Paulo");
+estados.Add("BA", "Bahia");
+estados.Add("MG", "Minas Gerais");
+
+Console.WriteLine("Dicionário de estados:");
+foreach (var item in estados)
+{
+    Console.WriteLine($"Chave: {item.Key}, Valor: {item.Value}");
+}
+
+//ele garante que todo elemento seja único, ou seja, não permite chaves duplicadas.
+//estados.Add("SP", "São Paulo"); //Isso gerará uma exceção do tipo ArgumentException, indicando que a chave "SP" já existe no dicionário.
+
+//Tentando adicionar uma chave duplicada usando o método Add() resultará em uma exceção do tipo ArgumentException, indicando que a chave já existe no dicionário.
+//A Key não pode ser duplicada, mas o valor pode ser repetido. Ou seja, você pode ter chaves diferentes associadas ao mesmo valor, mas não pode ter chaves duplicadas no dicionário.
+//estados.Add("BA", "Bahia");
+
+//Removendo e alterando elementos
+
+estados.Remove("BA"); //Removendo o elemento com a chave "BA"
+
+
+Console.WriteLine("Exibindo o dicionário após a remoção do elemento com a chave 'BA':");
+foreach (var item in estados)
+{
+    Console.WriteLine($"Chave: {item.Key}, Valor: {item.Value}");
+}
+
+//Alterar o valor de uma chave existente
+estados["MG"] = "Minas Gerais - Atualizado";
+
+Console.WriteLine("Exibindo o dicionário após a atualização do valor da chave 'MG':");
+foreach (var item in estados)
+{
+    Console.WriteLine($"Chave: {item.Key}, Valor: {item.Value}");
+}
+
+//Verificando a existência de uma chave ou valor
+
+string chave = "BA";
+Console.WriteLine($"Verificando o elemento: {chave}");
+
+if (estados.ContainsKey(chave))
+{
+    Console.WriteLine("A chave existe no dicionário.");
+}
+else
+{
+    Console.WriteLine("A chave não existe no dicionário.");
+}
+
+string valor = "Bahia";
+Console.WriteLine($"Verificando o valor: {valor}");
+
+if (estados.ContainsValue(valor))
+{
+    Console.WriteLine("O valor existe no dicionário.");
+}
+else
+{
+    Console.WriteLine("O valor não existe no dicionário.");
+}
+
+//Exibir valor de uma chave específica
+Console.WriteLine(estados["MG"]);
